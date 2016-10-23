@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+. /etc/env
+
+if [ ! -f $PGDATA/postgresql.conf ]; then
+  echo
+  echo 'Attempting to restore latest backup...'
+  exec /wal-e-wrapper backup-fetch $PGDATA/.. LATEST
+fi

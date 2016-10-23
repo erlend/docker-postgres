@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+. /etc/env
+
+PGHOME="$PGDATA/.."
+
+echo "Creating crontab with pattern: $CRON_PATTERN"
+echo "$CRON_PATTERN /wal-e-wrapper backup-push $PGHOME" | crontab -u postgres -
