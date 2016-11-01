@@ -12,8 +12,8 @@ VOLUME /var/lib/postgresql/data
 # Install PostgreSQL and WAL-E
 RUN echo "@edge http://dl-2.alpinelinux.org/alpine/edge/community" \
       >> etc/apk/repositories && \
-    apk add -U groff su-exec postgresql dcron python3 python3-dev g++ \
-      runit@edge pv@edge && \
+    apk add -U groff su-exec postgresql postgresql-contrib dcron python3 \
+      python3-dev g++ runit@edge pv@edge && \
     pip3 install --upgrade pip && \
     pip3 install wal-e boto
 
