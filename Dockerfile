@@ -28,7 +28,6 @@ RUN sed -e "s|#\(archive_mode =\) .*|\1 on|"                              \
 RUN apk del python3-dev g++ && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY etc /etc
-COPY entrypoint.sh /entrypoint.sh
+COPY . /
 
 ENTRYPOINT ["/entrypoint.sh"]
