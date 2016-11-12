@@ -3,4 +3,4 @@
 set -e
 . /etc/env
 
-exec su-exec postgres postgres $POSTGRES_DAEMON_ARGS
+exec su-exec postgres postgres -i $POSTGRES_DAEMON_ARGS
