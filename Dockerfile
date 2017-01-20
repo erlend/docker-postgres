@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.5
 
 EXPOSE 5432
 
@@ -9,10 +9,8 @@ ENV PGDATA=/var/lib/postgresql/data \
 
 VOLUME /var/lib/postgresql/data
 
-RUN echo "@edge http://dl-2.alpinelinux.org/alpine/edge/community" \
-      >> etc/apk/repositories && \
-    apk add -U groff su-exec postgresql postgresql-contrib dcron python3 \
-      python3-dev g++ runit@edge pv@edge && \
+RUN apk add -U groff su-exec postgresql postgresql-contrib dcron python3 \
+      python3-dev g++ runit pv && \
     pip3 install --upgrade pip && \
     pip3 install wal-e boto && \
     sed -e "s|#\(archive_mode =\) .*|\1 on|"                              \
